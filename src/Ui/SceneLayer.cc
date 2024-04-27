@@ -5,7 +5,7 @@
 
 void SceneLayer::OnAttach()
 {
-	glm::vec3 eye(100.0f, 100.0f, 100.0f);
+	glm::vec3 eye(0.0f, -0.1f, 100.0f);
 	glm::vec3 lookat(0.0f, 0.0f, 0.0f);
 	glm::vec3 upVector(0.0f, 0.0f, 1.0f);
 
@@ -26,7 +26,7 @@ void SceneLayer::OnAttach()
 	m_sence = new Scene(m_model, m_objectModels);
 
 	ObjectStructure *car = new ObjectStructure();
-	car->path = "res/objects/backpack/backpack.obj";
+	car->path = "res/objects/car/car.stl";
 	car->name = "car";
 	m_model.push_back(car);
 }
@@ -62,7 +62,7 @@ void SceneLayer::OnDetach()
 	delete m_camera;
 	delete m_frameBuffer;
 	delete m_TextureLightShader;
-	delete m_TextureLightShader;
+	delete m_TextureShader;
 	delete m_ColorLightShader;
 	delete m_ColorShader;
 	delete m_sence;
@@ -101,14 +101,14 @@ void SceneLayer::ShowMapSence()
 				glm::value_ptr(m_camera->GetViewMatrix()),
 				glm::value_ptr(m_camera->GetProjMatrix()),
 				ImGuizmo::OPERATION::TRANSLATE,
-				ImGuizmo::MODE::WORLD,
+				ImGuizmo::MODE::LOCAL,
 				glm::value_ptr(m_model[m_selected]->objModel));
 
 			ImGuizmo::Manipulate(
 				glm::value_ptr(m_camera->GetViewMatrix()),
 				glm::value_ptr(m_camera->GetProjMatrix()),
 				ImGuizmo::OPERATION::ROTATE_Z,
-				ImGuizmo::MODE::WORLD,
+				ImGuizmo::MODE::LOCAL,
 				glm::value_ptr(m_model[m_selected]->objModel));
 
 			if (ImGuizmo::IsUsing)
