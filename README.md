@@ -13,3 +13,7 @@ cmake ..
 
 then open the ObjectView.sln
 ```
+
+## demo
+
+![image-20240428045711477](png/demo.png)
