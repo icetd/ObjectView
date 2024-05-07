@@ -8,7 +8,7 @@
 
 ```
 cd ObjectView
-mkdir build
+mkdir build && cd build
 cmake ..
 
 then open the ObjectView.sln
